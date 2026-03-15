@@ -1,0 +1,9 @@
+{
+  "name": "smart-expense-tracker-monorepo",
+  "version": "1.0.0",
+  "description": "Monorepo for Smart Expense Tracker with Java Spring Boot and React",
+  "scripts": {
+    "start:frontend": "cd expense-tracker/frontend && npm install && npm run dev",
+    "start:backend": "cd expense-tracker/backend && mvn spring-boot:run"
+  }
+}

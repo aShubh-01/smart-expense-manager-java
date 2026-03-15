@@ -1,0 +1,7 @@
+com\expensetracker\model\Expense$ExpenseBuilder.class
+com\expensetracker\dto\ExpenseDTO.class
+com\expensetracker\service\ExpenseService.class
+com\expensetracker\model\Expense.class
+com\expensetracker\repository\ExpenseRepository.class
+com\expensetracker\service\impl\ExpenseServiceImpl.class
+com\expensetracker\dto\CategorySummaryDTO.class

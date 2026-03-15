@@ -1,0 +1,17 @@
+B:\Smart Expense Tracker\expense-tracker\backend\src\main\java\com\expensetracker\service\impl\ExpenseServiceImpl.java
+B:\Smart Expense Tracker\expense-tracker\backend\src\main\java\com\expensetracker\controller\AIController.java
+B:\Smart Expense Tracker\expense-tracker\backend\src\main\java\com\expensetracker\dto\ai\SpendingPredictionDTO.java
+B:\Smart Expense Tracker\expense-tracker\backend\src\main\java\com\expensetracker\exception\GlobalExceptionHandler.java
+B:\Smart Expense Tracker\expense-tracker\backend\src\main\java\com\expensetracker\dto\ai\FinancialReportDTO.java
+B:\Smart Expense Tracker\expense-tracker\backend\src\main\java\com\expensetracker\service\ExpenseService.java
+B:\Smart Expense Tracker\expense-tracker\backend\src\main\java\com\expensetracker\ExpenseTrackerApplication.java
+B:\Smart Expense Tracker\expense-tracker\backend\src\main\java\com\expensetracker\exception\ResourceNotFoundException.java
+B:\Smart Expense Tracker\expense-tracker\backend\src\main\java\com\expensetracker\dto\ExpenseDTO.java
+B:\Smart Expense Tracker\expense-tracker\backend\src\main\java\com\expensetracker\controller\ExpenseController.java
+B:\Smart Expense Tracker\expense-tracker\backend\src\main\java\com\expensetracker\dto\ai\BehaviorInsightDTO.java
+B:\Smart Expense Tracker\expense-tracker\backend\src\main\java\com\expensetracker\dto\ai\CategoryBreakdownDTO.java
+B:\Smart Expense Tracker\expense-tracker\backend\src\main\java\com\expensetracker\service\ai\GeminiService.java
+B:\Smart Expense Tracker\expense-tracker\backend\src\main\java\com\expensetracker\repository\ExpenseRepository.java
+B:\Smart Expense Tracker\expense-tracker\backend\src\main\java\com\expensetracker\dto\CategorySummaryDTO.java
+B:\Smart Expense Tracker\expense-tracker\backend\src\main\java\com\expensetracker\service\ai\AIAnalysisService.java
+B:\Smart Expense Tracker\expense-tracker\backend\src\main\java\com\expensetracker\model\Expense.java
