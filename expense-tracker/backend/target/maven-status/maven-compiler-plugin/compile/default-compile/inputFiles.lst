@@ -1,17 +1,33 @@
-B:\Smart Expense Tracker\expense-tracker\backend\src\main\java\com\expensetracker\service\impl\ExpenseServiceImpl.java
-B:\Smart Expense Tracker\expense-tracker\backend\src\main\java\com\expensetracker\controller\AIController.java
-B:\Smart Expense Tracker\expense-tracker\backend\src\main\java\com\expensetracker\dto\ai\SpendingPredictionDTO.java
-B:\Smart Expense Tracker\expense-tracker\backend\src\main\java\com\expensetracker\exception\GlobalExceptionHandler.java
-B:\Smart Expense Tracker\expense-tracker\backend\src\main\java\com\expensetracker\dto\ai\FinancialReportDTO.java
-B:\Smart Expense Tracker\expense-tracker\backend\src\main\java\com\expensetracker\service\ExpenseService.java
-B:\Smart Expense Tracker\expense-tracker\backend\src\main\java\com\expensetracker\ExpenseTrackerApplication.java
-B:\Smart Expense Tracker\expense-tracker\backend\src\main\java\com\expensetracker\exception\ResourceNotFoundException.java
-B:\Smart Expense Tracker\expense-tracker\backend\src\main\java\com\expensetracker\dto\ExpenseDTO.java
-B:\Smart Expense Tracker\expense-tracker\backend\src\main\java\com\expensetracker\controller\ExpenseController.java
-B:\Smart Expense Tracker\expense-tracker\backend\src\main\java\com\expensetracker\dto\ai\BehaviorInsightDTO.java
-B:\Smart Expense Tracker\expense-tracker\backend\src\main\java\com\expensetracker\dto\ai\CategoryBreakdownDTO.java
-B:\Smart Expense Tracker\expense-tracker\backend\src\main\java\com\expensetracker\service\ai\GeminiService.java
-B:\Smart Expense Tracker\expense-tracker\backend\src\main\java\com\expensetracker\repository\ExpenseRepository.java
-B:\Smart Expense Tracker\expense-tracker\backend\src\main\java\com\expensetracker\dto\CategorySummaryDTO.java
-B:\Smart Expense Tracker\expense-tracker\backend\src\main\java\com\expensetracker\service\ai\AIAnalysisService.java
-B:\Smart Expense Tracker\expense-tracker\backend\src\main\java\com\expensetracker\model\Expense.java
+/Users/shubhamdhokare01/Documents/Personal/projects/smart-expense-manager-java/expense-tracker/backend/src/main/java/com/expensetracker/model/EMI.java
+/Users/shubhamdhokare01/Documents/Personal/projects/smart-expense-manager-java/expense-tracker/backend/src/main/java/com/expensetracker/controller/ExpenseController.java
+/Users/shubhamdhokare01/Documents/Personal/projects/smart-expense-manager-java/expense-tracker/backend/src/main/java/com/expensetracker/repository/UserProfileRepository.java
+/Users/shubhamdhokare01/Documents/Personal/projects/smart-expense-manager-java/expense-tracker/backend/src/main/java/com/expensetracker/model/Expense.java
+/Users/shubhamdhokare01/Documents/Personal/projects/smart-expense-manager-java/expense-tracker/backend/src/main/java/com/expensetracker/controller/FinanceController.java
+/Users/shubhamdhokare01/Documents/Personal/projects/smart-expense-manager-java/expense-tracker/backend/src/main/java/com/expensetracker/dto/CategorySummaryDTO.java
+/Users/shubhamdhokare01/Documents/Personal/projects/smart-expense-manager-java/expense-tracker/backend/src/main/java/com/expensetracker/service/ai/AIAnalysisService.java
+/Users/shubhamdhokare01/Documents/Personal/projects/smart-expense-manager-java/expense-tracker/backend/src/main/java/com/expensetracker/model/UserProfile.java
+/Users/shubhamdhokare01/Documents/Personal/projects/smart-expense-manager-java/expense-tracker/backend/src/main/java/com/expensetracker/exception/GlobalExceptionHandler.java
+/Users/shubhamdhokare01/Documents/Personal/projects/smart-expense-manager-java/expense-tracker/backend/src/main/java/com/expensetracker/service/ai/GeminiService.java
+/Users/shubhamdhokare01/Documents/Personal/projects/smart-expense-manager-java/expense-tracker/backend/src/main/java/com/expensetracker/repository/UserRepository.java
+/Users/shubhamdhokare01/Documents/Personal/projects/smart-expense-manager-java/expense-tracker/backend/src/main/java/com/expensetracker/service/impl/ExpenseServiceImpl.java
+/Users/shubhamdhokare01/Documents/Personal/projects/smart-expense-manager-java/expense-tracker/backend/src/main/java/com/expensetracker/ExpenseTrackerApplication.java
+/Users/shubhamdhokare01/Documents/Personal/projects/smart-expense-manager-java/expense-tracker/backend/src/main/java/com/expensetracker/repository/EMIRepository.java
+/Users/shubhamdhokare01/Documents/Personal/projects/smart-expense-manager-java/expense-tracker/backend/src/main/java/com/expensetracker/model/ChatMessage.java
+/Users/shubhamdhokare01/Documents/Personal/projects/smart-expense-manager-java/expense-tracker/backend/src/main/java/com/expensetracker/repository/ChatMessageRepository.java
+/Users/shubhamdhokare01/Documents/Personal/projects/smart-expense-manager-java/expense-tracker/backend/src/main/java/com/expensetracker/controller/UserProfileController.java
+/Users/shubhamdhokare01/Documents/Personal/projects/smart-expense-manager-java/expense-tracker/backend/src/main/java/com/expensetracker/controller/AIController.java
+/Users/shubhamdhokare01/Documents/Personal/projects/smart-expense-manager-java/expense-tracker/backend/src/main/java/com/expensetracker/dto/ExpenseDTO.java
+/Users/shubhamdhokare01/Documents/Personal/projects/smart-expense-manager-java/expense-tracker/backend/src/main/java/com/expensetracker/repository/RecurringBillRepository.java
+/Users/shubhamdhokare01/Documents/Personal/projects/smart-expense-manager-java/expense-tracker/backend/src/main/java/InspectClient.java
+/Users/shubhamdhokare01/Documents/Personal/projects/smart-expense-manager-java/expense-tracker/backend/src/main/java/com/expensetracker/repository/ExpenseRepository.java
+/Users/shubhamdhokare01/Documents/Personal/projects/smart-expense-manager-java/expense-tracker/backend/src/main/java/com/expensetracker/dto/ai/CategoryBreakdownDTO.java
+/Users/shubhamdhokare01/Documents/Personal/projects/smart-expense-manager-java/expense-tracker/backend/src/main/java/com/expensetracker/controller/AuthController.java
+/Users/shubhamdhokare01/Documents/Personal/projects/smart-expense-manager-java/expense-tracker/backend/src/main/java/com/expensetracker/exception/ResourceNotFoundException.java
+/Users/shubhamdhokare01/Documents/Personal/projects/smart-expense-manager-java/expense-tracker/backend/src/main/java/com/expensetracker/dto/ai/BehaviorInsightDTO.java
+/Users/shubhamdhokare01/Documents/Personal/projects/smart-expense-manager-java/expense-tracker/backend/src/main/java/com/expensetracker/model/User.java
+/Users/shubhamdhokare01/Documents/Personal/projects/smart-expense-manager-java/expense-tracker/backend/src/main/java/com/expensetracker/repository/DebtRepository.java
+/Users/shubhamdhokare01/Documents/Personal/projects/smart-expense-manager-java/expense-tracker/backend/src/main/java/com/expensetracker/model/RecurringBill.java
+/Users/shubhamdhokare01/Documents/Personal/projects/smart-expense-manager-java/expense-tracker/backend/src/main/java/com/expensetracker/dto/ai/FinancialReportDTO.java
+/Users/shubhamdhokare01/Documents/Personal/projects/smart-expense-manager-java/expense-tracker/backend/src/main/java/com/expensetracker/service/ExpenseService.java
+/Users/shubhamdhokare01/Documents/Personal/projects/smart-expense-manager-java/expense-tracker/backend/src/main/java/com/expensetracker/dto/ai/SpendingPredictionDTO.java
+/Users/shubhamdhokare01/Documents/Personal/projects/smart-expense-manager-java/expense-tracker/backend/src/main/java/com/expensetracker/model/Debt.java

@@ -11,6 +11,13 @@ public class FinancialReportDTO {
     private double monthlySurplus;
     private int estimatedTimeToGoalDays;
 
+    private double debtLoadPercentage;
+    private double fixedCommitmentRatio;
+    private double emiMissProbability; // 0-100%
+    private String fixedCostHealth; // "Safe" | "Fair" | "High" | "Critical"
+    private String burnRateStatus; // "Sustainable" | "Aggressive" | "Unsafe"
+    private int bufferDays; // Days income covers total expenses
+
     private List<CategoryBreakdownDTO> categoryBreakdown;
     private List<String> recommendations;
 }

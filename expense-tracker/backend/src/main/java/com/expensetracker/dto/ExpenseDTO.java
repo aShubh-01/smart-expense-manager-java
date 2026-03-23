@@ -14,6 +14,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class ExpenseDTO {
     private String id;
+    private String userId;
 
     @NotBlank(message = "Title is required")
     private String title;

@@ -20,13 +20,13 @@ public class ExpenseController {
     private final ExpenseService expenseService;
 
     @PostMapping
-    public ResponseEntity<ExpenseDTO> createExpense(@Valid @RequestBody ExpenseDTO expenseDTO) {
-        return new ResponseEntity<>(expenseService.createExpense(expenseDTO), HttpStatus.CREATED);
+    public ResponseEntity<ExpenseDTO> createExpense(@RequestHeader("X-User-Id") String userId, @Valid @RequestBody ExpenseDTO expenseDTO) {
+        return new ResponseEntity<>(expenseService.createExpense(expenseDTO, userId), HttpStatus.CREATED);
     }
 
     @GetMapping
-    public ResponseEntity<List<ExpenseDTO>> getAllExpenses() {
-        return ResponseEntity.ok(expenseService.getAllExpenses());
+    public ResponseEntity<List<ExpenseDTO>> getAllExpenses(@RequestHeader("X-User-Id") String userId) {
+        return ResponseEntity.ok(expenseService.getAllExpenses(userId));
     }
 
     @GetMapping("/{id}")
@@ -46,12 +46,12 @@ public class ExpenseController {
     }
 
     @GetMapping("/category/{category}")
-    public ResponseEntity<List<ExpenseDTO>> getExpensesByCategory(@PathVariable String category) {
-        return ResponseEntity.ok(expenseService.getExpensesByCategory(category));
+    public ResponseEntity<List<ExpenseDTO>> getExpensesByCategory(@RequestHeader("X-User-Id") String userId, @PathVariable String category) {
+        return ResponseEntity.ok(expenseService.getExpensesByCategory(category, userId));
     }
 
     @GetMapping("/monthly-summary")
-    public ResponseEntity<List<CategorySummaryDTO>> getMonthlySummary() {
-        return ResponseEntity.ok(expenseService.getMonthlySummary());
+    public ResponseEntity<List<CategorySummaryDTO>> getMonthlySummary(@RequestHeader("X-User-Id") String userId) {
+        return ResponseEntity.ok(expenseService.getMonthlySummary(userId));
     }
 }

@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.Aggregation;
 import org.springframework.data.mongodb.core.aggregation.AggregationResults;
+import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -24,16 +25,17 @@ public class ExpenseServiceImpl implements ExpenseService {
     private final MongoTemplate mongoTemplate;
 
     @Override
-    public ExpenseDTO createExpense(ExpenseDTO expenseDTO) {
+    public ExpenseDTO createExpense(ExpenseDTO expenseDTO, String userId) {
         Expense expense = mapToEntity(expenseDTO);
+        expense.setUserId(userId);
         expense.setCreatedAt(LocalDateTime.now());
         Expense savedExpense = expenseRepository.save(expense);
         return mapToDTO(savedExpense);
     }
 
     @Override
-    public List<ExpenseDTO> getAllExpenses() {
-        return expenseRepository.findAll().stream()
+    public List<ExpenseDTO> getAllExpenses(String userId) {
+        return expenseRepository.findByUserId(userId).stream()
                 .map(this::mapToDTO)
                 .collect(Collectors.toList());
     }
@@ -70,15 +72,17 @@ public class ExpenseServiceImpl implements ExpenseService {
     }
 
     @Override
-    public List<ExpenseDTO> getExpensesByCategory(String category) {
-        return expenseRepository.findByCategory(category).stream()
+    public List<ExpenseDTO> getExpensesByCategory(String category, String userId) {
+        return expenseRepository.findByUserId(userId).stream()
+                .filter(e -> e.getCategory().equalsIgnoreCase(category))
                 .map(this::mapToDTO)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public List<CategorySummaryDTO> getMonthlySummary() {
+    public List<CategorySummaryDTO> getMonthlySummary(String userId) {
         Aggregation aggregation = Aggregation.newAggregation(
+                Aggregation.match(Criteria.where("userId").is(userId)),
                 Aggregation.group("category").sum("amount").as("totalAmount"),
                 Aggregation.project("totalAmount").and("category").previousOperation()
         );
@@ -90,6 +94,7 @@ public class ExpenseServiceImpl implements ExpenseService {
     private ExpenseDTO mapToDTO(Expense expense) {
         return new ExpenseDTO(
                 expense.getId(),
+                expense.getUserId(),
                 expense.getTitle(),
                 expense.getAmount(),
                 expense.getCategory(),
@@ -102,6 +107,7 @@ public class ExpenseServiceImpl implements ExpenseService {
     private Expense mapToEntity(ExpenseDTO dto) {
         return Expense.builder()
                 .id(dto.getId())
+                .userId(dto.getUserId())
                 .title(dto.getTitle())
                 .amount(dto.getAmount())
                 .category(dto.getCategory())
