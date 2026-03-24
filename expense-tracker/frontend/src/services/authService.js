@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080/api/auth";
+const API_URL = `${import.meta.env.VITE_BACKEND_URL}/api/auth`;
 
 const authService = {
   login: async (email, password) => {
@@ -12,7 +12,7 @@ const authService = {
   },
 
   signup: async (email, password, username) => {
-    const response = await axios.post(`${API}/signup`, { email, password, username });
+    const response = await axios.post(`${API_URL}/signup`, { email, password, username });
     return response.data;
   },
 

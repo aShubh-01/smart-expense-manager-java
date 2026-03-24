@@ -24,8 +24,11 @@ public class RecurringBill {
     
     private String title;
     private double amount;
-    private String frequency; // MONTHLY, QUARTERLY, YEARLY
+    private String recurrenceType; // DAILY, WEEKLY, MONTHLY, YEARLY
+    private int recurrenceValue; // e.g. every 1 month, every 3 months
     private String category;
     private LocalDate nextDueDate;
+    private LocalDate lastPaidDate; 
+    private boolean isPaid; // track current month payment
     private String status; // ACTIVE, PAUSED
 }

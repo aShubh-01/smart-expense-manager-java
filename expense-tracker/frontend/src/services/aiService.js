@@ -1,7 +1,7 @@
 import axios from "axios";
 import authService from "./authService";
 
-const API = "http://localhost:8080/api/ai";
+const API = `${import.meta.env.VITE_BACKEND_URL}/api/ai`;
 
 const getHeaders = () => ({ headers: { "X-User-Id": authService.getCurrentUser()?.id } });
 

@@ -1,7 +1,7 @@
 import axios from "axios";
 import authService from "./authService";
 
-const API = "http://localhost:8080/api/finance";
+const API = `${import.meta.env.VITE_BACKEND_URL}/api/finance`;
 
 const getHeaders = () => ({ headers: { "X-User-Id": authService.getCurrentUser()?.id } });
 

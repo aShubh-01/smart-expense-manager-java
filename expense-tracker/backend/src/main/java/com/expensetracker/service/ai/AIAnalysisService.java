@@ -61,7 +61,8 @@ public class AIAnalysisService {
                                 Collectors.summingDouble(Expense::getAmount)));
 
         double incomeVal = profile.getMonthlyIncome();
-        double totalCommitted = totalSpent + totalEmis + totalBills;
+        double totalDebtInstallments = debts.stream().mapToDouble(Debt::getInstallmentAmount).sum();
+        double totalCommitted = totalSpent + totalEmis + totalBills + totalDebtInstallments;
         double expenseRatio = incomeVal == 0 ? 0 : (totalCommitted / incomeVal) * 100;
 
         String prompt = """
@@ -78,14 +79,15 @@ CURRENT DATA:
 - Total Direct Expenses: %.2f
 - Total Fixed Monthly EMIs: %.2f
 - Total Monthly Bills: %.2f
-- Total Outstanding Debt: %.2f
-- Expense/Income Ratio (with fixed costs): %.1f%%
+- Monthly Debt Installments: %.2f
+- Total Outstanding Debt (Remaining): %.2f
+- Expense/Income Ratio (with all commitments): %.1f%%
 - Category-wise Spending: %s
 
   TASK:
   1. Assess financial health (poor | average | good | excellent) based on the budget and goals.
   2. Provide a detailed category breakdown.
-  3. Calculate monthly surplus/deficit (Income - (Expenses + EMIs + Bills)).
+  3. Calculate monthly surplus/deficit (Income - (Expenses + EMIs + Bills + Debt Installments)).
   4. CRITICAL: If surplus is negative, 'bufferDays' and 'estimatedTimeToGoalDays' MUST BE 0. You cannot have negative days of buffer.
   5. CRITICAL: If surplus is negative, 'emiMissProbability' MUST BE high (80-100%%) as income does not cover fixed obligations.
   6. Calculate 'bufferDays' as (Income / Daily Burn Rate) ONLY if income covers costs, otherwise 0.
@@ -111,7 +113,7 @@ CURRENT DATA:
    ]
   }
   """.formatted(incomeVal, profile.getFinancialDescription(), profile.getMonthlyBudget(), 
-                  profile.getSavingsGoal(), profile.getStrategy(), totalSpent, totalEmis, totalBills, totalDebt, expenseRatio, categoryTotals);
+                  profile.getSavingsGoal(), profile.getStrategy(), totalSpent, totalEmis, totalBills, totalDebtInstallments, totalDebt, expenseRatio, categoryTotals);
 
         String response = geminiService.askGemini(prompt);
         return mapper.readValue(cleanJson(response), FinancialReportDTO.class);
@@ -236,21 +238,26 @@ Return ONLY JSON:
                 - Profile: %s
                 - Total Spent This Month: %.2f
                 - Active EMIs: %d (Total Monthly: %.2f)
+                - Debt Commitment: Total monthly installments of %.2f
                 - Total Outstanding Debt: %.2f
                 - Recurring Monthly Bills: %d (Total Monthly: %.2f)
-                - Grand Total Monthly Commitments (EMI + Bills): %.2f
+                - Grand Total Monthly Commitments (EMI + Bills + Debt Installments): %.2f
                 
                 DATA DETAILS:
                 - CATEGORIES: %s
-                - BILLS: %s
+                - BILLS: %s (Check if paid current month)
                 - EMIS: %s
+                - DEBTS: %s
                 """.formatted(
                         profile.getMonthlyIncome(), profile.getMonthlyBudget(), profile.getFinancialDescription(),
-                        totalSpent, emis.size(), monthlyEmiTotal, totalDebt, bills.size(), totalBillsSum,
-                        (monthlyEmiTotal + totalBillsSum),
+                        totalSpent, emis.size(), monthlyEmiTotal,
+                        debts.stream().mapToDouble(Debt::getInstallmentAmount).sum(),
+                        totalDebt, bills.size(), totalBillsSum,
+                        (monthlyEmiTotal + totalBillsSum + debts.stream().mapToDouble(Debt::getInstallmentAmount).sum()),
                         expenses.stream().collect(Collectors.groupingBy(Expense::getCategory, Collectors.summingDouble(Expense::getAmount))),
-                        bills.stream().map(b -> b.getTitle() + " (₹" + b.getAmount() + ")").collect(Collectors.toList()),
-                        emis.stream().map(e -> e.getLoanName() + " (₹" + e.getAmount() + ")").collect(Collectors.toList())
+                        bills.stream().map(b -> b.getTitle() + " (₹" + b.getAmount() + ", Last Paid: " + (b.getLastPaidDate() != null ? b.getLastPaidDate() : "Never") + ")").collect(Collectors.toList()),
+                        emis.stream().map(e -> e.getLoanName() + " (₹" + e.getAmount() + ")").collect(Collectors.toList()),
+                        debts.stream().map(d -> d.getLender() + " (Total: ₹" + d.getTotalAmount() + ", Monthly: ₹" + d.getInstallmentAmount() + ")").collect(Collectors.toList())
         );
 
         // Fetch Last 10 messages for context

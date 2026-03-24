@@ -29,5 +29,9 @@ public class EMI {
     private int remainingTenureMonths;
     private LocalDate startDate;
     private LocalDate nextInstallmentDate;
+    private String recurrenceType; // DAILY, WEEKLY, MONTHLY, YEARLY
+    private int recurrenceValue; // e.g. every 1 month, every 3 months
+    private LocalDate lastPaidDate; 
+    private boolean isPaid; // NEW: track current cycle payment
     private String status; // ACTIVE, COMPLETED
 }

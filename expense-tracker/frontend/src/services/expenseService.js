@@ -1,7 +1,7 @@
 import axios from 'axios';
 import authService from './authService';
 
-const API_BASE_URL = 'http://localhost:8080/api/expenses';
+const API_BASE_URL = `${import.meta.env.VITE_BACKEND_URL}/api/expenses`;
 
 const getUserId = () => authService.getCurrentUser()?.id;
 

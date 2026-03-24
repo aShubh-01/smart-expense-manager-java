@@ -8,7 +8,6 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.LocalDate;
 
 @Document(collection = "debts")
 @Data
@@ -27,6 +26,6 @@ public class Debt {
     private double amountPaid;
     private double currentBalance;
     private double interestRate;
-    private LocalDate dueDate;
+    private double installmentAmount; // monthly installment set by user
     private String status; // ACTIVE, SETTLED
 }
